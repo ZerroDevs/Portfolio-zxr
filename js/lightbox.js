@@ -26,7 +26,12 @@
       this.galleries = data || {};
     },
 
+    isInitialized: false,
+
     init() {
+      if (this.isInitialized) return;
+      this.isInitialized = true;
+
       this.modal = document.getElementById('lightboxModal');
       this.img = document.getElementById('lightboxImg');
       this.title = document.getElementById('lightboxTitle');

@@ -920,8 +920,13 @@ input {
 }
 
 .terminal-content {
+  display: none;
   background-color: #0a0d12;
   color: #c9d1d9;
+}
+
+.terminal-container.expanded .terminal-content {
+  display: block;
 }
 
 .terminal-header {

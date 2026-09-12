@@ -10,7 +10,12 @@
 (function () {
   'use strict';
 
+  let isInitialized = false;
+
   function initNav() {
+    if (isInitialized) return;
+    isInitialized = true;
+
     // 1. Mobile Menu Drawer Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileNavDrawer = document.getElementById('mobileNavDrawer');

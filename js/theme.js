@@ -38,9 +38,14 @@
     }
   }
 
+  let isInitialized = false;
+
   function initTheme() {
     const currentTheme = getStoredTheme();
     applyTheme(currentTheme);
+
+    if (isInitialized) return;
+    isInitialized = true;
 
     const themeToggleBtn = document.getElementById('themeToggleBtn');
     if (themeToggleBtn) {

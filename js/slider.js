@@ -10,7 +10,12 @@
 (function () {
   'use strict';
 
+  let isInitialized = false;
+
   function initSliders() {
+    if (isInitialized) return;
+    isInitialized = true;
+
     const sliderElements = document.querySelectorAll('.card-slider');
 
     sliderElements.forEach((slider) => {

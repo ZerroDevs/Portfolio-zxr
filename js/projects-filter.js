@@ -9,7 +9,12 @@
 (function () {
   'use strict';
 
+  let isInitialized = false;
+
   function initProjectsFilter() {
+    if (isInitialized) return;
+    isInitialized = true;
+
     const filterButtons = document.querySelectorAll('.filter-btn');
     const searchInput = document.getElementById('projectSearchInput');
     const projectItems = document.querySelectorAll('[data-category]');

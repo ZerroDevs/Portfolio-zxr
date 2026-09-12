@@ -9,7 +9,12 @@
 (function () {
   'use strict';
 
+  let isInitialized = false;
+
   function initClipboard() {
+    if (isInitialized) return;
+    isInitialized = true;
+
     const discordCopyBtn = document.getElementById('discordCopyBtn');
     const copyFeedback = document.getElementById('copyFeedback');
     const discordIcon = document.getElementById('discordIcon');
