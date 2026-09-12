@@ -60,6 +60,7 @@
     window.ZeroNuxTheme?.init();
     window.ZeroNuxSliders?.init();
     window.ZeroNuxClipboard?.init();
+    window.ZeroNuxTerminal?.init();
     window.ZeroNuxNav?.init();
     window.ZeroNuxProjectsFilter?.init();
   }
