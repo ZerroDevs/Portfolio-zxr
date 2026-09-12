@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZeroNux | ZerroDevs - Developer Portfolio</title>
-  <meta name="description" content="Personal portfolio of ZerroDevs (ZeroNux) - Full-Stack Developer specializing in high-performance web applications, media tooling, and minimalist interfaces.">
+  <title>Projects | ZeroNux - ZerroDevs Portfolio</title>
+  <meta name="description" content="Explore projects built by ZerroDevs (ZeroNux) - Web applications, video downloader tools, e-commerce systems, and interactive canvas games.">
   <meta name="author" content="ZerroDevs">
 
   <!-- Favicons -->
@@ -19,7 +19,7 @@
   <!-- FontAwesome 6 (CDN) for Professional Icons (No Emojis) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Stylesheet in css/ folder -->
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
 
   <!-- Instant Theme Script to Prevent Flicker (Default: Light Mode) -->
@@ -32,18 +32,18 @@
 </head>
 <body>
 
-  <!-- Site Navigation Header (Contact link removed from header) -->
+  <!-- Site Navigation Header (Contact link removed as requested) -->
   <header class="site-header" id="siteHeader">
     <div class="header-inner container">
-      <a href="#hero" class="brand-link" aria-label="ZeroNux Home">
+      <a href="index.html" class="brand-link" aria-label="ZeroNux Home">
         <img src="Images/logo.webp" alt="ZeroNux Logo" class="brand-logo" width="34" height="34">
         <span class="brand-name">ZeroNux</span>
       </a>
 
       <nav class="nav-desktop" aria-label="Main Navigation">
-        <a href="#hero" class="nav-link">Overview</a>
+        <a href="index.html" class="nav-link">Overview</a>
         <a href="#featured" class="nav-link">Featured</a>
-        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="#other-projects" class="nav-link">Other Works</a>
       </nav>
 
       <div class="header-actions">
@@ -63,87 +63,58 @@
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
       <div class="mobile-nav-links">
-        <a href="#hero" class="mobile-nav-link">Overview</a>
+        <a href="index.html" class="mobile-nav-link">Overview</a>
         <a href="#featured" class="mobile-nav-link">Featured</a>
-        <a href="projects.html" class="mobile-nav-link">Projects</a>
+        <a href="#other-projects" class="mobile-nav-link">Other Works</a>
       </div>
     </div>
   </header>
 
   <main>
-    <!-- Section 1: Hero / Introduction -->
-    <section class="hero-section" id="hero">
-      <div class="container hero-container">
-        <div class="hero-content">
-          <div class="hero-brand-row">
-            <div class="hero-avatar-frame">
-              <img src="Images/logo.webp" alt="ZeroNux Logo" class="hero-avatar" width="104" height="104">
-            </div>
-            <div class="hero-brand-meta">
-              <h1 class="hero-title">ZeroNux</h1>
-              <p class="hero-dev-name">ZerroDevs</p>
-            </div>
+    <!-- Projects Page Hero -->
+    <section class="page-hero">
+      <div class="container page-hero-container">
+        <a href="index.html" class="back-link">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+          <span>Back to Overview</span>
+        </a>
+        <h1 class="page-title">Projects</h1>
+        <p class="page-subtitle">
+          A comprehensive portfolio of open-source utilities, full-stack applications, and interactive web tools built by ZerroDevs.
+        </p>
+
+        <!-- Search & Filter Toolbar -->
+        <div class="filter-toolbar">
+          <div class="filter-group" role="tablist" aria-label="Filter projects by category">
+            <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+            <button type="button" class="filter-btn" data-filter="featured">Featured</button>
+            <button type="button" class="filter-btn" data-filter="tools">Tools &amp; Utilities</button>
+            <button type="button" class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+            <button type="button" class="filter-btn" data-filter="interactive">Interactive</button>
           </div>
 
-          <p class="hero-description">
-            Full-stack developer building robust web applications, automation tooling, and interactive digital experiences. Focused on minimalist aesthetics, performance, and clean code.
-          </p>
-
-          <!-- Social & Contact Links -->
-          <div class="hero-social-grid" id="contact">
-            <a href="https://github.com/ZerroDevs" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="GitHub Profile">
-              <i class="fa-brands fa-github" aria-hidden="true"></i>
-              <span>GitHub</span>
-            </a>
-
-            <!-- Discord Copy / Direct Link Button -->
-            <div class="discord-btn-wrapper">
-              <button type="button" class="social-btn discord-btn" id="discordCopyBtn" aria-label="Copy Discord Username zx.r" title="Copy Discord: zx.r">
-                <i class="fa-brands fa-discord" id="discordIcon" aria-hidden="true"></i>
-                <span id="discordBtnText">Discord (zx.r)</span>
-              </button>
-              <div class="copy-feedback-tooltip" id="copyFeedback" role="status" aria-live="polite">Copied zx.r</div>
-            </div>
-
-            <a href="https://youtube.com/@ZeroNuxS" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube Channel">
-              <i class="fa-brands fa-youtube" aria-hidden="true"></i>
-              <span>YouTube</span>
-            </a>
-
-            <a href="https://instagram.com/zeronuxi" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram Profile">
-              <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-              <span>Instagram</span>
-            </a>
-
-            <a href="https://guns.lol/zeronux" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Guns.lol Bio Link">
-              <i class="fa-solid fa-link" aria-hidden="true"></i>
-              <span>Guns.lol</span>
-            </a>
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+            <input type="text" id="projectSearchInput" class="search-input" placeholder="Search projects by name..." aria-label="Search projects">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Section 2: Featured Works (The Top 4) -->
+    <!-- Featured Works Section -->
     <section class="featured-section" id="featured">
       <div class="container">
         <div class="section-header flex-header">
           <div>
-            <h2 class="section-title">Featured Works</h2>
-            <p class="section-subtitle">Flagship web applications and production utility platforms.</p>
-          </div>
-          <div>
-            <a href="projects.html" class="btn btn-primary">
-              <span>View All Projects</span>
-              <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-            </a>
+            <h2 class="section-title">Featured Applications</h2>
+            <p class="section-subtitle">Flagship production repositories and web systems.</p>
           </div>
         </div>
 
         <div class="featured-grid">
 
           <!-- Project 1: yt-dlp-downloader -->
-          <article class="featured-card">
+          <article class="featured-card" data-category="featured tools">
             <div class="card-slider" data-gallery="ytdlp">
               <div class="slider-viewport">
                 <div class="slider-track">
@@ -155,7 +126,6 @@
                   <div class="slider-slide"><img src="ydlp/6.png" alt="yt-dlp-downloader interface view 6" loading="lazy"></div>
                 </div>
 
-                <!-- Slider Navigation Controls -->
                 <button type="button" class="slider-btn slider-btn-prev" aria-label="Previous slide">
                   <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
                 </button>
@@ -163,16 +133,13 @@
                   <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
                 </button>
 
-                <!-- Fullscreen Expand Button -->
                 <button type="button" class="slider-expand-btn" aria-label="View screenshot fullscreen">
                   <i class="fa-solid fa-expand" aria-hidden="true"></i>
                 </button>
 
-                <!-- Image Counter -->
                 <div class="slider-counter" aria-hidden="true">1 / 6</div>
               </div>
 
-              <!-- Pagination Dots -->
               <div class="slider-dots" role="tablist" aria-label="yt-dlp-downloader image slides"></div>
             </div>
 
@@ -196,7 +163,7 @@
           </article>
 
           <!-- Project 2: New-Desginv2 Store -->
-          <article class="featured-card">
+          <article class="featured-card" data-category="featured ecommerce">
             <div class="card-slider" data-gallery="new-desginv2">
               <div class="slider-viewport">
                 <div class="slider-track">
@@ -247,7 +214,7 @@
           </article>
 
           <!-- Project 3: ZeroNux Store -->
-          <article class="featured-card">
+          <article class="featured-card" data-category="featured ecommerce">
             <div class="card-slider" data-gallery="zeronux-store">
               <div class="slider-viewport">
                 <div class="slider-track">
@@ -297,7 +264,7 @@
           </article>
 
           <!-- Project 4: LuckyWheel -->
-          <article class="featured-card">
+          <article class="featured-card" data-category="featured interactive">
             <div class="card-slider" data-gallery="luckywheel">
               <div class="slider-viewport">
                 <div class="slider-track">
@@ -351,18 +318,18 @@
       </div>
     </section>
 
-    <!-- Section 3: Other Projects (Minimal Compact Grid) -->
+    <!-- Other Projects Section -->
     <section class="other-projects-section" id="other-projects">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Other Projects</h2>
-          <p class="section-subtitle">Additional web applications, localized platforms, and client works.</p>
+          <h2 class="section-title">Other Works &amp; Repositories</h2>
+          <p class="section-subtitle">Explorations, client projects, and localized web solutions.</p>
         </div>
 
         <div class="compact-grid">
 
           <!-- Project 5: New-Desgin v1 -->
-          <article class="compact-card">
+          <article class="compact-card" data-category="ecommerce">
             <div class="compact-card-header">
               <div class="compact-card-icon">
                 <i class="fa-regular fa-folder" aria-hidden="true"></i>
@@ -383,7 +350,7 @@
           </article>
 
           <!-- Project 6: Enjaz-International -->
-          <article class="compact-card">
+          <article class="compact-card" data-category="tools">
             <div class="compact-card-header">
               <div class="compact-card-icon">
                 <i class="fa-regular fa-folder" aria-hidden="true"></i>
@@ -404,7 +371,7 @@
           </article>
 
           <!-- Project 7: Saudi Mile Market -->
-          <article class="compact-card">
+          <article class="compact-card" data-category="ecommerce">
             <div class="compact-card-header">
               <div class="compact-card-icon">
                 <i class="fa-regular fa-folder" aria-hidden="true"></i>
@@ -477,12 +444,12 @@
     </div>
   </div>
 
-  <!-- Modular Scripts from js/ directory -->
+  <!-- Modular Scripts -->
   <script src="js/theme.js"></script>
   <script src="js/lightbox.js"></script>
   <script src="js/slider.js"></script>
-  <script src="js/clipboard.js"></script>
   <script src="js/nav.js"></script>
+  <script src="js/projects-filter.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

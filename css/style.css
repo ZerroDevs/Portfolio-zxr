@@ -1,0 +1,1275 @@
+/* ==========================================================================
+   ZeroNux Portfolio - Solid Minimalist Design System
+   Strict Constraints:
+   - ZERO Gradients (No linear-gradient, radial-gradient, conic-gradient)
+   - ZERO Glassmorphism (No backdrop-filter, no frosted blur)
+   - ZERO Pink or Purple colors
+   - ZERO Emojis
+   - ZERO Status Tags/Badges (No pills, green dots, or badge chips)
+   - DEFAULT THEME: Light Mode
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Root Variables & Color Tokens (Default: Light Mode)
+   -------------------------------------------------------------------------- */
+:root,
+[data-theme="light"] {
+  /* Solid Background Surfaces */
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-elevated: #f1f5f9;
+  --bg-overlay: #0a0d12;
+  --bg-media: #0f172a;
+
+  /* Solid Borders */
+  --border-subtle: #e2e8f0;
+  --border-default: #cbd5e1;
+  --border-hover: #94a3b8;
+  --border-active: #059669;
+
+  /* Solid Accent Colors (Flat Emerald & Teal) */
+  --accent-primary: #059669;
+  --accent-primary-hover: #047857;
+  --accent-primary-text: #ffffff;
+  --accent-secondary: #0d9488;
+  --accent-secondary-hover: #0f766e;
+  --accent-subtle: #ecfdf5;
+  --accent-subtle-border: #a7f3d0;
+
+  /* Solid Typography Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Solid Interactive Button Defaults */
+  --btn-default-bg: #f1f5f9;
+  --btn-default-border: #cbd5e1;
+  --btn-default-hover: #e2e8f0;
+  --btn-default-text: #0f172a;
+
+  /* Sizing & Architecture */
+  --container-max: 1200px;
+  --header-height: 64px;
+  --radius-xs: 3px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --transition-fast: 0.15s;
+  --transition-normal: 0.25s;
+
+  /* Font Stacks */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, Monaco, 'Courier New', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   Dark Theme Overrides (Solid Charcoal & Flat Emerald)
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] {
+  /* Solid Background Surfaces */
+  --bg-base: #090b0e;
+  --bg-surface: #11151c;
+  --bg-surface-hover: #161c24;
+  --bg-card: #131822;
+  --bg-card-hover: #18202c;
+  --bg-elevated: #1a222f;
+  --bg-overlay: #050709;
+  --bg-media: #07090c;
+
+  /* Solid Borders */
+  --border-subtle: #1c2432;
+  --border-default: #263242;
+  --border-hover: #3b4b60;
+  --border-active: #10b981;
+
+  /* Solid Accent Colors (Vibrant Flat Emerald & Teal) */
+  --accent-primary: #10b981;
+  --accent-primary-hover: #059669;
+  --accent-primary-text: #041710;
+  --accent-secondary: #14b8a6;
+  --accent-secondary-hover: #0d9488;
+  --accent-subtle: #062319;
+  --accent-subtle-border: #0e4c36;
+
+  /* Solid Typography Colors */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-inverse: #090b0e;
+
+  /* Solid Interactive Button Defaults */
+  --btn-default-bg: #151b24;
+  --btn-default-border: #263242;
+  --btn-default-hover: #1d2532;
+  --btn-default-text: #f8fafc;
+}
+
+/* --------------------------------------------------------------------------
+   CSS Reset & Base Rules
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 24px);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  transition: background-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  font-family: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Site Header & Navigation (Fixed, Solid, Non-Glass)
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  height: var(--header-height);
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease;
+}
+
+.header-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-default);
+  background-color: var(--bg-surface);
+}
+
+.brand-name {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.nav-desktop {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast) ease;
+  padding: 0.25rem 0;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-primary);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Solid Theme Toggle Switch */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--btn-default-bg);
+  border: 1px solid var(--btn-default-border);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.85rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--btn-default-hover);
+  border-color: var(--border-hover);
+}
+
+.theme-icon {
+  font-size: 0.95rem;
+  color: var(--accent-primary);
+}
+
+/* Mobile Menu Button */
+.mobile-menu-btn {
+  display: none;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--btn-default-bg);
+  border: 1px solid var(--btn-default-border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  transition: background-color var(--transition-fast) ease;
+}
+
+.mobile-menu-btn:hover {
+  background-color: var(--btn-default-hover);
+}
+
+/* Mobile Drawer (Solid, Flat) */
+.mobile-nav-drawer {
+  display: none;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-default);
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+.mobile-nav-drawer.active {
+  display: block;
+}
+
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mobile-nav-link {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link.active {
+  color: var(--accent-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Section 1: Hero / Introduction
+   -------------------------------------------------------------------------- */
+.hero-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: var(--bg-base);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-content {
+  max-width: 860px;
+}
+
+.hero-brand-row {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-avatar-frame {
+  width: 104px;
+  height: 104px;
+  flex-shrink: 0;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.hero-brand-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.hero-dev-name {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+.hero-description {
+  font-size: 1.1875rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 2.25rem;
+}
+
+/* Social & Contact Grid */
+.hero-social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.social-btn i {
+  font-size: 1rem;
+  color: var(--accent-primary);
+}
+
+.social-btn:hover {
+  background-color: var(--bg-surface-hover);
+  border-color: var(--accent-primary);
+}
+
+/* Discord Copy Wrapper & Tooltip */
+.discord-btn-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.discord-btn {
+  cursor: pointer;
+}
+
+.copy-feedback-tooltip {
+  position: absolute;
+  top: -38px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--text-primary);
+  color: var(--bg-surface);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-xs);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-fast) ease, transform var(--transition-fast) ease;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+.copy-feedback-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   Section Headers (Common)
+   -------------------------------------------------------------------------- */
+.section-header {
+  margin-bottom: 2.75rem;
+}
+
+.section-header.flex-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Projects Page Dedicated Styles
+   -------------------------------------------------------------------------- */
+.page-hero {
+  padding-top: 4rem;
+  padding-bottom: 3.5rem;
+  background-color: var(--bg-base);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.page-hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  transition: color var(--transition-fast) ease;
+  margin-bottom: 0.5rem;
+}
+
+.back-link:hover {
+  color: var(--accent-primary);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.page-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* Search / Filter Toolbar (Solid Flat) */
+.filter-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.95rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.filter-btn:hover {
+  background-color: var(--bg-surface-hover);
+  color: var(--text-primary);
+  border-color: var(--border-hover);
+}
+
+.filter-btn.active {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary-text);
+}
+
+.search-input-wrapper {
+  position: relative;
+  min-width: 260px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.9rem 0.55rem 2.4rem;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  transition: border-color var(--transition-fast) ease;
+}
+
+.search-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Section 2: Featured Works (The Top 4)
+   -------------------------------------------------------------------------- */
+.featured-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.featured-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast) ease;
+}
+
+.featured-card:hover {
+  border-color: var(--border-hover);
+}
+
+/* Card Slider (Touch, Swipe, Navigation) */
+.card-slider {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-media);
+  user-select: none;
+}
+
+.slider-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: #000000;
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform var(--transition-normal) cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slider-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #000000;
+}
+
+.slider-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Slider Controls */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  z-index: 10;
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease;
+  opacity: 0.85;
+}
+
+.slider-btn:hover {
+  opacity: 1;
+  background-color: var(--bg-surface-hover);
+  border-color: var(--accent-primary);
+}
+
+.slider-btn-prev {
+  left: 0.75rem;
+}
+
+.slider-btn-next {
+  right: 0.75rem;
+}
+
+.slider-expand-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 32px;
+  height: 32px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8125rem;
+  z-index: 10;
+  transition: background-color var(--transition-fast) ease;
+  opacity: 0.85;
+}
+
+.slider-expand-btn:hover {
+  opacity: 1;
+  background-color: var(--bg-surface-hover);
+  border-color: var(--accent-primary);
+}
+
+.slider-counter {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-xs);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Slider Pagination Dots */
+.slider-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.5rem;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--border-default);
+  border: none;
+  padding: 0;
+  transition: background-color var(--transition-fast) ease, transform var(--transition-fast) ease;
+}
+
+.slider-dot:hover {
+  background-color: var(--border-hover);
+}
+
+.slider-dot.active {
+  background-color: var(--accent-primary);
+  transform: scale(1.25);
+}
+
+/* Card Body & Information */
+.card-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-header-info {
+  margin-bottom: 0.85rem;
+}
+
+.card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.card-category {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+
+.card-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
+  flex-grow: 1;
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+/* Flat Buttons (No Gradients, No Glass) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.btn-primary {
+  background-color: var(--btn-default-bg);
+  border: 1px solid var(--btn-default-border);
+  color: var(--text-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-default-hover);
+  border-color: var(--border-hover);
+}
+
+.btn-secondary {
+  background-color: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-primary-text);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+}
+
+/* --------------------------------------------------------------------------
+   Section 3: Other Projects (Minimal Compact Cards)
+   -------------------------------------------------------------------------- */
+.other-projects-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: var(--bg-base);
+}
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.compact-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast) ease;
+}
+
+.compact-card:hover {
+  border-color: var(--border-hover);
+}
+
+.compact-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.compact-card-icon {
+  font-size: 1.5rem;
+  color: var(--accent-primary);
+}
+
+.compact-links {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.compact-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  transition: color var(--transition-fast) ease, border-color var(--transition-fast) ease;
+}
+
+.compact-icon-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+.compact-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.compact-description {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Solid Minimalist Footer
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--bg-surface);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  margin-top: auto;
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--border-default);
+}
+
+.footer-brand {
+  font-family: var(--font-mono);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.footer-sep {
+  color: var(--border-default);
+}
+
+.footer-copy {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--btn-default-bg);
+  border: 1px solid var(--btn-default-border);
+  border-radius: var(--radius-xs);
+  padding: 0.45rem 0.85rem;
+  font-size: 0.8125rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--btn-default-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Full-Screen Image Lightbox Modal (Solid, Non-Glass)
+   -------------------------------------------------------------------------- */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: var(--bg-overlay);
+  display: none;
+  flex-direction: column;
+  user-select: none;
+}
+
+.lightbox-modal.active {
+  display: flex;
+}
+
+.lightbox-header {
+  height: 56px;
+  background-color: #0d1117;
+  border-bottom: 1px solid #21262d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.25rem;
+  z-index: 1010;
+}
+
+.lightbox-title-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lightbox-title {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.lightbox-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #8b949e;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+}
+
+.lightbox-close-btn {
+  width: 34px;
+  height: 34px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: var(--radius-xs);
+  color: #f0f6fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background-color var(--transition-fast) ease;
+}
+
+.lightbox-close-btn:hover {
+  background-color: #21262d;
+  border-color: var(--accent-primary);
+}
+
+.lightbox-body {
+  position: relative;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.lightbox-image-wrapper {
+  max-width: 90vw;
+  max-height: 82vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border: 1px solid #21262d;
+  border-radius: var(--radius-xs);
+  background-color: #000000;
+}
+
+.lightbox-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  color: #f0f6fc;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+  z-index: 1020;
+  transition: background-color var(--transition-fast) ease, border-color var(--transition-fast) ease;
+}
+
+.lightbox-nav-btn:hover {
+  background-color: #161b22;
+  border-color: var(--accent-primary);
+}
+
+.lightbox-prev-btn {
+  left: 1.25rem;
+}
+
+.lightbox-next-btn {
+  right: 1.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Breakpoints (Flawless Mobile & PC)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .compact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-desktop {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: flex;
+  }
+
+  .hero-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-brand-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .hero-description {
+    font-size: 1.0625rem;
+  }
+
+  .hero-social-grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .social-btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .discord-btn-wrapper {
+    width: 100%;
+  }
+
+  .featured-section,
+  .other-projects-section {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .compact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-input-wrapper {
+    min-width: 100%;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .lightbox-body {
+    padding: 0.75rem;
+  }
+
+  .lightbox-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .lightbox-prev-btn {
+    left: 0.5rem;
+  }
+
+  .lightbox-next-btn {
+    right: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .page-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-avatar-frame {
+    width: 88px;
+    height: 88px;
+  }
+
+  .card-body {
+    padding: 1.25rem;
+  }
+
+  .card-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .theme-label {
+    display: none;
+  }
+
+  .theme-toggle-btn {
+    padding: 0.45rem 0.6rem;
+  }
+}
